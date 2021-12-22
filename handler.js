@@ -27,7 +27,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Opa, desculpe, o servidor está com erro ou talvez o apikey seja inválido')
             }
         })
         Client.cmd.on('ytmp3', async (data) => {
@@ -43,7 +43,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Opa, desculpe, o servidor está com erro ou talvez o apikey seja inválido')
             }
         })
         Client.cmd.on('playvid', async (data) => {
@@ -59,7 +59,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, 'video.mp4', `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
             } catch (e) {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Opa, desculpe, o servidor está com erro ou talvez o apikey seja inválido')
             }
         })
         Client.cmd.on('play', async (data) => {
@@ -75,7 +75,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Opa, desculpe, o servidor está com erro ou talvez o apikey seja inválido')
             }
         })
         Client.cmd.on('ig', async (data) => {
@@ -99,7 +99,7 @@ module.exports = handle = (client, Client) => {
                     Client.sendFileFromUrl(data.from, stomr.data.data[i].url, `ig.${stomr.data.data[i].type}`, `「 INSTAGRAM 」\n\n*Username*: ${stomr.data.username}\n*Type*: ${stomr.data.data[i].type}`, data.message);
                 }
             } catch {
-                data.reply('Username tidak ditemukan')
+                data.reply('Nome de usuário não encontrado')
             }
         })
         Client.cmd.on('joox', async (data) => {
@@ -114,7 +114,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${jox.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${jox.audio}`, 'audio.mp3', ``, data.message)
             } catch {
-                data.reply('Maaf lagu tidak ditemukan')
+                data.reply('Desculpe, música não encontrada')
             }
         })
         /*RANDOM*/
@@ -166,10 +166,10 @@ module.exports = handle = (client, Client) => {
         })
         Client.cmd.on('limit', async (data) => {
             const dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
-            if(dataUser[data.sender].premium) return data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\nAnda adalah user premium yang memiliki akses tanpa batas limit!`)
+            if(dataUser[data.sender].premium) return data.reply(`eae @${data.sender.split('@')[0]} 👋🏻\nVocê é um usuário premium com acesso ilimitado!`)
             limits = configs.maxLimit - dataUser[data.sender].limit
             if(limits <= 0) return data.reply("```" + `Limit anda sudah habis` + "```")
-            data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Limit anda tersisa ${limits || 30}\nLimit setiap hari di reset jam 00.00\nJika anda ingin mendapatkan unlimited limit silahkan chat owner bot ketik !owner`)
+            data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Limit anda tersisa ${limits || 30}\nOs limites são redefinidos todos os dias às 00h00 \ nSe você deseja obter limites ilimitados, converse com o proprietário do bot, digite #Owner`)
         })
         Client.cmd.on('info', async (data) => {
 		data.reply(ingfo)
@@ -181,7 +181,7 @@ module.exports = handle = (client, Client) => {
 			const mediaMsg = await client.prepareMessageMedia(await getBuffer(res.data.url), 'imageMessage')
             const buttonMessage = {
 			      contentText: 'Waifu',
-				  footerText: 'Press the button below to get a random waifu image',
+				  footerText: 'Pressione o botão abaixo para obter uma imagem waifu aleatória',
                         "contextInfo": {
                               participant: data.sender,
                               stanzaId: data.message.key.id,
@@ -210,9 +210,9 @@ module.exports = handle = (client, Client) => {
             const res = await fetch(`https://api.jikan.moe/v3/search/anime?q=${data.body}`)
 			const damta = await res.json()
 			const { title, synopsis, episodes, url, rated, score, image_url } = damta.results[0]
-			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Anime found!*\n\n*Title:* ${title}\n*Episodes:* ${episodes}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
+			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Anime encontrado!*\n\n*Titulo:* ${title}\n*Episodios:* ${episodes}\n*Avaliação:* ${rated}\n*Pontuação:* ${score}\n*Sinopse:* ${synopsis}\n*URL*: ${url}`, data.message)
             } catch {
-                data.reply('Anime not found')
+                data.reply('Anime não encontrado')
             }
 		})
         Client.cmd.on('manga', async (data) => {
@@ -223,9 +223,9 @@ module.exports = handle = (client, Client) => {
             const res = await fetch(`https://api.jikan.moe/v3/search/manga?q=${data.body}`)
 			const damta = await res.json()
 			const { title, synopsis, chapters, url, rated, score, image_url } = damta.results[0]
-			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Manga found!*\n\n*Title:* ${title}\n*Chapters:* ${chapters}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
+			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Manga encontrado!*\n\n*Titulo:* ${title}\n*Capítulos:* ${chapters}\n*Avaliação:* ${rated}\n*Pontuação:* ${score}\n*Sinopse:* ${synopsis}\n*URL*: ${url}`, data.message)
             } catch {
-                data.reply('Manga not found')
+                data.reply('Manga não encontrado')
             }
 		})
         Client.cmd.on('chara', async (data) => {
@@ -236,37 +236,37 @@ module.exports = handle = (client, Client) => {
             const res = await fetch(`https://api.jikan.moe/v3/search/character?q=${data.body}`)
 			const damta = await res.json()
 			const { name, alternative_names, url, image_url } = damta.results[0]
-			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Character found!*\n\n*Name:* ${name}\n*Alternative names:* ${alternative_names}\n*URL*: ${url}`, data.message)
+			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Personagem encontrado!*\n\n*Nome:* ${name}\n*Nome alternativo:* ${alternative_names}\n*URL*: ${url}`, data.message)
             } catch {
-                data.reply('Character not found')
+                data.reply('Personagem não encontrado')
             }
 		})
         /*OWNER*/
         Client.cmd.on('setpp', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
-            if(!data.isQuotedImage && data.type != 'imageMessage') return data.reply(`Wrong format!, please send image with caption ${data.prefix}setgroupicon, or reply image with ${data.prefix}setgroupicon`)
+            if(!data.isQuotedImage && data.type != 'imageMessage') return data.reply(`Formato errado! Envie a imagem com a legenda ${data.prefix}setgroupicon, ou responder imagem com ${data.prefix}setgroupicon`)
             const getbuff = data.isQuotedImage ? JSON.parse(JSON.stringify(data.message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : data.message
             const dlfile = await client.downloadMediaMessage(getbuff)
             client.updateProfilePicture(client.user.jid, dlfile)
-            data.reply(`success!, profile picture has been changed by @${data.sender.split('@')[0]}`)
+            data.reply(`sucesso !, a foto do perfil foi alterada por @${data.sender.split('@')[0]}`)
         })
         Client.cmd.on('block', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
-            if(data.mentionedJidList.length == 0) return data.reply(`Kirim perintah *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
+            if(data.mentionedJidList.length == 0) return data.reply(`Enviar pedidos *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
             data.mentionedJidList.forEach(jids => client.blockUser(jids, "add"))
-            data.reply(`Succecs block @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')}`)
+            data.reply(`bloqueado com sucesso @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')}`)
         })
         Client.cmd.on('unblock', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
-            if(data.mentionedJidList.length == 0) return data.reply(`Kirim perintah *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
+            if(data.mentionedJidList.length == 0) return data.reply(`Pedido enviado *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
             data.mentionedJidList.forEach(jids => client.blockUser(jids, "remove"))
-            data.reply(`Succecs unblock @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')}`)
+            data.reply(`Desbloqueado com sucesso @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')}`)
         })
         Client.cmd.on('addvn', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
-            if(!data.isQuotedAudio) return data.reply('Reply vn/audio!')
+            if(!data.isQuotedAudio) return data.reply('Responder vn/audio!')
             if(data.body == "") return data.reply(`Kirim perintah ${data.prefix}addvn [ nama ]\nContoh ${data.command}addvn hai`)
-            if(vn.includes(data.body)) return data.reply('Nama vn sudah ada, harap gunakan nama lain')
+            if(vn.includes(data.body)) return data.reply('O nome vn já existe, por favor, use outro nome')
             nv = await data.downloadMediaQuotedMessage()
             fs.writeFileSync(`./lib/vn/${data.body}.mp3`, nv)
             global.vn.push(data.body)
@@ -276,33 +276,33 @@ module.exports = handle = (client, Client) => {
         Client.cmd.on('delvn', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
             if(data.body == "") return data.reply(`Kirim perintah ${data.prefix}addvn [ nama ]\nContoh ${data.command}addvn hai`)
-            if(!vn.includes(data.body)) return data.reply('vn tidak ditemukan!')
+            if(!vn.includes(data.body)) return data.reply('vn não encontrado!')
             global.vn.splice(vn.indexOf(data.body), 1)
             fs.writeFileSync('./lib/json/vn.json', JSON.stringify(vn, null, 2))
             fs.unlinkSync(`./lib/vn/${data.body}.mp3`)
-            data.reply(`Berhasil mengahpus vn ${data.body} dari database`)
+            data.reply(`Berhasil mengahpus vn ${data.body} do banco de dados`)
         })
         Client.cmd.on('listvn', async (data) => {
-            let listvn = 'Ketik nama vn untuk mendownload vn\n\n*List vn*:\n\n'
+            let listvn = 'Digite o nome vn para fazer o download vn\n\n*List vn*:\n\n'
             vn.forEach((vnn, i) => listvn += `*${i+1}*. ${vnn}\n`)
             data.reply(listvn)
         })
         Client.cmd.on('tebakgambar', async (data) => {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
-			if (global.tebakgambar[data.from] && global.tebakgambar[data.from].id) return data.reply("Masih ada soal yang berjalan")
+			if (global.tebakgambar[data.from] && global.tebakgambar[data.from].id) return data.reply("Ainda há problemas acontecendo")
             const getSoal = await axios.get(`${configs.apiUrl}/api/tebakgambar?apikey=${configs.zeksKey}`)
 			ses = Date.now()
-			send = await Client.sendFileFromUrl(data.from, getSoal.data.result.soal, "soal.jpg", "Waktu menjawab 30 detik!", data.message)
+			send = await Client.sendFileFromUrl(data.from, getSoal.data.result.soal, "soal.jpg", "Tempo de resposta 30 segundos!", data.message)
 			global.tebakgambar[data.from] = {jawaban: getSoal.data.result.jawaban, id: ses}
 			await sleep(10000)
 			if (global.tebakgambar[data.from].id != ses) return
-			Client.reply(data.from,"Waktu tersisa 20 detik", send)
+			Client.reply(data.from,"20 segundos restantes", send)
 			await sleep(10000)
 			if (global.tebakgambar[data.from].id != ses) return
-			Client.reply(data.from,"Waktu tersisa 10 detik", send)
+			Client.reply(data.from,"10 segundos restantes", send)
 			await sleep(10000)
 			if (global.tebakgambar[data.from].id != ses) return
-			Client.reply(data.from, "Waktu habis", send)
+			Client.reply(data.from, "O tempo acabou", send)
 			Client.reply(data.from,`Jawabannya adalah: ${getSoal.data.result.jawaban}`, send)
 			global.tebakgambar[data.from] = {}
 			
@@ -317,14 +317,14 @@ module.exports = handle = (client, Client) => {
             data.reply('OkE')
         })
         Client.cmd.on('resetlimit', async (data) => {
-            if(!data.isOwner) return data.reply('Owner only!')
+            if(!data.isOwner) return data.reply('Apenas o dono pode usar o comando!')
             const dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
             for(users in dataUser) {
                 dataUser[users].limit = 0
             }
             fs.writeFileSync('./lib/json/dataUser.json', JSON.stringify(dataUser))
-            console.log(color('[ INFO ]', 'cyan'), 'LIMIT RESETED!')
-            data.reply('Sukses!')
+            console.log(color('[ INFO ]', 'cyan'), 'O limite de uso foi resetado!')
+            data.reply('Sucesso!')
         })
         Client.cmd.on('bc', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
@@ -334,13 +334,13 @@ module.exports = handle = (client, Client) => {
             var ext = data.isQuotedImage ? 'jpg' : 'mp4'
             list.forEach(async dataC => {
                 if(mediaBuffer) Client.sendFileFromBase64(dataC.jid, mediaBuffer.toString('base64'), `bc.${ext}`, `*BOT BROADCAST*\n\n${data.body} ${dataC.jid.endsWith('@g.us') ?'\n\n_#izin admin grup _*'+dataC.name+'*_' : ''}`)
-                else Client.sendText(dataC.jid, `*BOT BROADCAST*\n\n${data.body}\n\n_#izin admin grup *${dataC.name}*_`)
+                else Client.sendText(dataC.jid, `*BOT BROADCAST*\n\n${data.body}\n\n_#izin admin do grupo *${dataC.name}*_`)
             })
         })
         Client.cmd.on('join', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
             if(data.body == "") return data.reply(`Link nya?`)
-            Client.acceptInviteLink(data.body).then(() => data.reply('ok')).catch(() => data.reply('failed'))
+            Client.acceptInviteLink(data.body).then(() => data.reply('ok')).catch(() => data.reply('deu uma falha aqui'))
         })
         Client.cmd.on('owner', async (data) => {
             Client.sendContact(data.from, { number: configs.ownerList[0].split('@')[0], name: 'owner' }, data.message)
@@ -373,7 +373,7 @@ module.exports = handle = (client, Client) => {
                 for(var [num, val] of Object.entries(dataUser))
                     if(val.premium) strings += `~> @${num.split('@')[0]}\n`
                 data.reply(strings)
-            } else data.reply(`do u need example?\n\nExample:\n${data.prefix}premium add @0 \nor\n${data.prefix}premium add 62xxxx`)
+            } else data.reply(`você precisa de exemplo??\n\nExamplo:\n${data.prefix}premium add @0 \nor\n${data.prefix}premium add 62xxxx`)
         })
         /*NEWS*/
         Client.cmd.on('tribunnews', async (data) => {
@@ -383,7 +383,7 @@ module.exports = handle = (client, Client) => {
             ttt = res.data.result
             var teks = `*「 TRIBUNNEWS 」*\n\n`
             for(let i = 0; i < ttt.length; i++) {
-                teks += `*Title* : ${ttt[i].title}\n*Waktu* : ${ttt[i].time}\n*Keterangan*: ${ttt[i].ket}\n*Link*: ${ttt[i].url}\n\n`
+                teks += `*Titulo* : ${ttt[i].title}\n*Tempo* : ${ttt[i].time}\n*Descrição*: ${ttt[i].ket}\n*Link*: ${ttt[i].url}\n\n`
             }
             await data.reply(teks)
         })
@@ -394,7 +394,7 @@ module.exports = handle = (client, Client) => {
             ttt = res.data.result
             var teks = `*「 LIPUTANNEWS 」*\n\n`
             for(let i = 0; i < ttt.length; i++) {
-                teks += `*Title* : ${ttt[i].title}\n*Waktu* : ${ttt[i].time}\n*Keterangan*: ${ttt[i].ket}\n*Kategori*: ${ttt[i].category}\n*Link*: ${ttt[i].url}\n\n`
+                teks += `*Titulo* : ${ttt[i].title}\n*Tempo* : ${ttt[i].time}\n*Descrição*: ${ttt[i].ket}\n*Categoria*: ${ttt[i].category}\n*Link*: ${ttt[i].url}\n\n`
             }
             await Client.sendFileFromUrl(data.from, ttt[0].thumb, 'p.jpg', teks, data.message)
         })
@@ -405,7 +405,7 @@ module.exports = handle = (client, Client) => {
             ttt = res.data.result
             var teks = `*「 FOXNEWS 」*\n\n`
             for(let i = 0; i < ttt.length; i++) {
-                teks += `*Title* : ${ttt[i].title}\n*Waktu* : ${ttt[i].time}\n*Keterangan*: ${ttt[i].content}\n*Negara*: ${ttt[i].country}\n*Link*: ${ttt[i].url}\n\n`
+                teks += `*Titulo* : ${ttt[i].title}\n*Tempo* : ${ttt[i].time}\n*Descrição*: ${ttt[i].content}\n*país*: ${ttt[i].country}\n*Link*: ${ttt[i].url}\n\n`
             }
             await Client.sendFileFromUrl(data.from, ttt[0].thumb, 'p.jpg', teks, data.message)
         })
@@ -414,22 +414,22 @@ module.exports = handle = (client, Client) => {
             if(!data.isGroup) return data.reply(mess.group)
             timesNow = moment(data.t * 1000).format('YYYY-MM-DD HH:mm:ss')
             afkJs.addAfk(data.from, data.sender, data.body, timesNow)
-            Client.sendText(data.from, "```" + `${data.pushname} [@${data.sender.split('@')[0]}] sedang AFK\n\nAlasan: ${data.body}\nTime: ${timesNow}` + "```")
+            Client.sendText(data.from, "```" + `${data.pushname} [@${data.sender.split('@')[0]}] atualmente está afk\n\nMotivo: ${data.body}\nTempo: ${timesNow}` + "```")
         })
 	     Client.cmd.on('welcome', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].welcome) return data.reply('Already on!')
+                if(dataGc[data.from].welcome) return data.reply('Definido como on!')
                 dataGc[data.from].welcome = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Sucesso!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].welcome) return data.reply('Already off!')
+                if(!dataGc[data.from].welcome) return data.reply('Definido como off!')
                 dataGc[data.from].welcome = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Sucesso!')
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
